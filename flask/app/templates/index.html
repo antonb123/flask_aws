@@ -2,11 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+    <title>Temp Readings</title>
+    <style>
+        table {
+            width: 80%;
+            border: 1px black solid;
+        }
+
+        td {
+            border: 1px black solid;
+        }
+    </style>
 </head>
 <body>
-    <h1>This is my website</h1>
+    <table>
+        <tr>
+            <th>Sensor</th>
+            <th>Date & Time</th>
+            <th>Temp Reading</th>
+        </tr>
+        {% for reading in readings %}
+            <tr>
+                <td>
+                    {{ reading['sensor'] }}
+                </td>
+                <td>
+                    {{ reading['datatime'] }}
+                </td>
+                <td>
+                    {{ reading['temp'] }}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>

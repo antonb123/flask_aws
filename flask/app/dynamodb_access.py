@@ -1,5 +1,5 @@
 import os
-
+import datetime
 import boto3
 
 
@@ -12,6 +12,10 @@ def get_resource():
 
 def get_all_readings():
     client = get_resource()
-    table = client.Table('temp_readings')
+    table = client.Table('water_temperature')
     response = table.scan()
-    return response['Items']
+    responses = response['Items']
+    for response in responses:
+        response['datetime'] = datetime.datetime.strptime(response['datetime'], "%Y-%m-%d %H:%M:%S")
+    responses.sort(key=lambda item: item['datetime'], reverse=True)
+    return responses

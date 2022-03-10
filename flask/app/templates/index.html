@@ -2,24 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Temp Readings</title>
+    <title>Water Temperature</title>
     <style>
         table {
+            text-align: center;
             width: 80%;
             border: 1px black solid;
         }
 
         td {
+            text-align: center;
             border: 1px black solid;
         }
     </style>
 </head>
 <body>
+    <BODY BGCOLOR="#0D6D3F">
+    <BODY text="#E9B99C">
     <table>
         <tr>
-            <th>Sensor</th>
+            <th>Location</th>
             <th>Date & Time</th>
-            <th>Temp Reading</th>
+            <th>Current Temperature</th>
         </tr>
         {% for reading in readings %}
             <tr>
@@ -27,7 +31,7 @@
                     {{ reading['sensor'] }}
                 </td>
                 <td>
-                    {{ reading['datatime'] }}
+                    {{ reading['datetime'] }}
                 </td>
                 <td>
                     {{ reading['temp'] }}
